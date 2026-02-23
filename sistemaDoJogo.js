@@ -64,24 +64,27 @@ class Mago extends Personagem {
     }
 }
 
-const guerreiro1 = new Guerreiro('Alexander', 150, 25, 20);
-const mago2 = new Mago('Harry', 100, 30, 20);
+const guerreiro1 = new Guerreiro('Guerreiro Alexander', 150, 25, 20);
+const mago2 = new Mago('Mago Harry', 100, 30, 20);
 
 function simularBatalha(personagem1, personagem2) {
-    console.log('---- ÍNICIO ----');
     console.log('');
-    console.log('🔸 Dados do Guerreiro');
+    console.log('---- STATUS INICIAIS ----');
+    console.log('');
+    console.log('🔸 Dados do personagem 1');
     console.log(personagem1);
+    personagem1.exibirStatus();
     console.log('');
-    console.log('🔹 Dados do Mago');
+    console.log('🔹 Dados do personagem 2');
     console.log(personagem2);
+    personagem2.exibirStatus();
     console.log('');
 
     console.log('---- BATALHA ÉPICA ----');
 
     let rodada = 1;
 
-    while ((personagem1.estaVivo(), personagem2.estaVivo())) {
+    while (personagem1.estaVivo() && personagem2.estaVivo()) {
         console.log('');
         console.log(`🔁 RODADA ${rodada}`);
 
@@ -95,7 +98,7 @@ function simularBatalha(personagem1, personagem2) {
         personagem2.atacar(personagem1);
         console.log('');
         personagem1.exibirStatus();
-        if (!personagem1.estaVivo) {
+        if (!personagem1.estaVivo()) {
             break;
         }
 
@@ -104,6 +107,18 @@ function simularBatalha(personagem1, personagem2) {
 
         rodada++;
     }
+
+    console.log('');
+    console.log('---- STATUS FINAIS ----');
+    console.log('');
+    console.log('🔸 Dados do personagem 1');
+    console.log(personagem1);
+    personagem1.exibirStatus();
+    console.log('');
+    console.log('🔹 Dados do personagem 2');
+    console.log(personagem2);
+    personagem2.exibirStatus();
+    console.log('');
 }
 
 simularBatalha(guerreiro1, mago2);
